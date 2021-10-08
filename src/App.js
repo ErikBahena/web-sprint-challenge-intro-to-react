@@ -1,30 +1,47 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import axios from "axios";
+
+import { ThemeProvider } from "styled-components";
+
+import Nav from "./components/Nav/Nav.js";
+import Character from "./components/Character.js";
+
+const theme = {
+  black: "black",
+};
 
 const App = () => {
   const [characters, setCharacters] = useState(null);
+  const [currentCharacter, setCurrentCharacter] = useState(null);
 
   useEffect(() => {
     axios
       .get(`https://swapi.dev/api/people`)
       .then((res) => {
-        setCharacters(res.data)
+        setCharacters(res.data);
       })
       .catch((err) => {
         setCharacters(null);
       });
-
   }, []);
 
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  const createNamesArr = () => {
+    const namesArr = characters.map((char) => char.name);
+    return namesArr;
+  };
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Nav
+          names={characters ? createNamesArr() : null}
+          setCurrentCharacter={setCurrentCharacter}
+          characters={characters ? characters : null}
+        ></Nav>
+
+        {currentCharacter && <Character characterObj={currentCharacter}></Character>}
+      </div>
+    </ThemeProvider>
   );
 };
 

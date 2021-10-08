@@ -19,6 +19,7 @@ const StyledApp = styled.div`
 
 const theme = {
   black: "black",
+  gold: "#FFD740",
 };
 
 const App = () => {

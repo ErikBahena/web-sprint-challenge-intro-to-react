@@ -6,7 +6,7 @@ const StyledNav = styled.div`
   height: max-content;
   width: 100%;
   background-color: black;
-  color: white;
+  color: ${(props) => props.theme.gold};
   display: flex;
   flex-wrap: wrap;
 
@@ -23,8 +23,10 @@ const StyledNav = styled.div`
     justify-content: center;
 
     p {
+      text-align: center;
       font-size: 1.5rem;
       font-weight: bold;
+      text-transform: uppercase;
     }
   }
 `;

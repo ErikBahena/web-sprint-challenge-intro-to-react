@@ -7,15 +7,30 @@ const StyledCard = styled.div`
   margin-top: 2rem;
   height: max-content;
   width: max-content;
-  background-color: white;
-  padding: 5rem 4rem;
+  padding: 1rem;
+  background-color: black;
+  border-radius: 0.6rem;
+  color: ${(props) => props.theme.gold};
 
-  .name-container {
+  .name-container h2 {
     text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 0;
   }
 
-  .info-container{
+  .info-container {
+    display: flex;
+    flex-wrap: wrap;
 
+
+    div:nth-of-type(1){
+        margin-right: 0.8rem;
+    }
+    div:nth-of-type(2){
+        margin-left: 0.8rem;
+    }
   }
 `;
 
@@ -30,14 +45,20 @@ export default function Character({ characterObj }) {
     <StyledCard>
       <div className="name-container">
         <h2>{character.name}</h2>
+        <hr></hr>
       </div>
       <div className="info-container">
-        <p>Born: {character.birth_year}</p>
-        <p>Eye Color: {character.eye_color}</p>
-        <p>Hair Color: {character.hair_color}</p>
-        <p>Skin Color: {character.skin_color}</p>
-        <p>Height: {character.height} cm</p>
-        <p>Weight: {character.Weight} Kg</p>
+        <div>
+          <p>Born: {character.birth_year}</p>
+          <p>Eye Color: {character.eye_color}</p>
+          <p>Hair Color: {character.hair_color}</p>
+        </div>
+
+        <div>
+          <p>Skin Color: {character.skin_color}</p>
+          <p>Height: {character.height} cm</p>
+          <p>Weight: {character.mass} Kg</p>
+        </div>
       </div>
     </StyledCard>
   );

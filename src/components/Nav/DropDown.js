@@ -5,9 +5,7 @@ export default function DropDown({ names, setCurrentCharacter, characters }) {
   const handleNameChange = (e) => {
     const characterName = e.target.value;
 
-    if (!(characterName === "Select Below")) {
-
-
+    if (!(characterName === "Select a Character")) {
       setCurrentCharacter(
         characters.filter((char) => char.name === characterName).flat()
       );

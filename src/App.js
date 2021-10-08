@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import Nav from "./components/Nav/Nav.js";
 import Character from "./components/Character.js";
+
+const StyledApp = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const theme = {
   black: "black",
@@ -25,6 +36,7 @@ const App = () => {
       });
   }, []);
 
+  // Helper funciton
   const createNamesArr = () => {
     const namesArr = characters.map((char) => char.name);
     return namesArr;
@@ -32,15 +44,17 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <StyledApp>
         <Nav
           names={characters ? createNamesArr() : null}
           setCurrentCharacter={setCurrentCharacter}
           characters={characters ? characters : null}
         ></Nav>
 
-        {currentCharacter && <Character characterObj={currentCharacter}></Character>}
-      </div>
+        {currentCharacter && (
+          <Character characterObj={currentCharacter}></Character>
+        )}
+      </StyledApp>
     </ThemeProvider>
   );
 };

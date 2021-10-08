@@ -3,12 +3,17 @@ import styled from "styled-components";
 import DropDown from "./DropDown.js";
 
 const StyledNav = styled.div`
-  height: 5rem;
+  height: max-content;
   width: 100%;
-  background-color: white;
+  background-color: black;
+  color: white;
   display: flex;
+  flex-wrap: wrap;
+
   justify-content: space-around;
   align-items: center;
+  position: fixed;
+  top: 0;
 
   div {
     height: 100%;
@@ -16,7 +21,6 @@ const StyledNav = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5%;
 
     p {
       font-size: 1.5rem;
@@ -32,7 +36,11 @@ export default function Nav({ names, setCurrentCharacter, characters }) {
         <p>Star Wars Character Viewer</p>
       </div>
       {names && (
-        <DropDown names={names} setCurrentCharacter={setCurrentCharacter} characters={characters}/>
+        <DropDown
+          names={names}
+          setCurrentCharacter={setCurrentCharacter}
+          characters={characters}
+        />
       )}
     </StyledNav>
   );

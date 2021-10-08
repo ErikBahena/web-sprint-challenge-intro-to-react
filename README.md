@@ -79,6 +79,22 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Put your answers underneath the questions:
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+React Js is a JavaScript Library that allows users to build user interfaces or UI components. React will update and rerender components when it's corresponding state variables are changed. React solves many problems, two major ones being: 1. Abstracting dom manipulation, making it easier to create front end components. 2. updating and rerendering components when state changes. Both of these things are doable in vanilla js but are more time consuming and difficult.
 1. Describe component state.
+Component state can be described as an object of data, either passed down from a parent, or declared in the individual component, that can store data about a component. In React, the useState hook allows for components to store data and update that data.
 1. Describe props.
+props or properties are values that are passed to a child component from a parent component. These properties can be anything, functions, values, parent state, state, etc. An example:
+ <Parent >
+ const val = true;
+ <Child bool={val}>
+</Parent>
+
+Now the Child component has access to the val which is declared in the parent. (Not totally valid code, just an illustration)
+
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+Side effects are when a function relies on, or modifies external (outside of parameters) values to accomplish something within it's body. This means that if the side effect does not work as expected, then the function will not work. For example, making an api request to get some data. The api request is the side effect, you can not be sure that the api is going to respond to the request properly, and if you using that data for a ui component, then your component will not be rendered properly. To sync effects in a react component, you should use the useEffect hook and set the second parameter of the function to an array containing the values you want tracked.
+For example: useEffect(() => {
+  console.log("hello");
+}, [variable]);
+
+When the variable changes, the console.log is going to run.
